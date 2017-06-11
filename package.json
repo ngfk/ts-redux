@@ -1,0 +1,34 @@
+{
+  "name": "@ailurus/ts-redux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index",
+  "typings": "dist/index",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rimraf ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngfk/ts-redux.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngfk/ts-redux/issues"
+  },
+  "homepage": "https://github.com/ngfk/ts-redux#readme",
+  "devDependencies": {
+    "rimraf": "^2.6.1",
+    "typescript": "^2.3.4"
+  },
+  "dependencies": {
+    "redux": "^3.6.0"
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
+}
