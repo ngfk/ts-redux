@@ -1,4 +1,4 @@
-import * as Redux from 'Redux';
+import * as Redux from 'redux';
 
 import { Reducer } from './reducer';
 import { Store } from './store';
