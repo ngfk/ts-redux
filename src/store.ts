@@ -4,7 +4,7 @@ import { ActionDispatcher } from './action-dispatcher';
 import { Action } from './action';
 import { Reducer } from './reducer';
 
-const PURGE = '___TS-REDUX:PURGE___';
+const PURGE = '@@TSREDUX:PURGE';
 
 export class Store<TState, TActions> implements Redux.Store<TState> {
 
