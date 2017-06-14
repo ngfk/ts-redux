@@ -52,4 +52,4 @@ store.action('TODO_ADD').dispatch({ id: 0, text: 'My first TODO!' });
 
 ### Examples
 * [TodoMVC Angular](https://github.com/ngfk/todomvc-angular-ts-redux)
-* TodoMVC React
+* [TodoMVC React](https://github.com/ngfk/todomvc-react-ts-redux)
