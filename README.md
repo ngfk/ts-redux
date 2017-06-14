@@ -1,5 +1,7 @@
 # Ailurus TS-Redux
 
+![Npm version](https://img.shields.io/npm/v/@ailurus/ts-redux.svg)
+
 Typescript wrapper for [Redux](https://github.com/reactjs/redux).
 
 ### Usage
