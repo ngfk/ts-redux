@@ -31,8 +31,8 @@ export class Store<TState, TActions> implements Redux.Store<TState> {
         this.initial = state;
     }
 
-    public dispatch(action: Action) {
-        this.redux.dispatch(action);
+    public dispatch(action: Action): Action {
+        return this.redux.dispatch(action);
     }
 
     public getState(): TState {
@@ -43,7 +43,7 @@ export class Store<TState, TActions> implements Redux.Store<TState> {
         return this.redux.subscribe(listener);
     }
 
-    public replaceReducer(reducer: Reducer<TState>) {
+    public replaceReducer(reducer: Reducer<TState>): void {
         this.reducer = this.extendReducer(reducer);
         this.redux.replaceReducer(this.reducer);
     }
