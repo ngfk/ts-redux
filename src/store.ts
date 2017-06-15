@@ -31,8 +31,8 @@ export class Store<TState, TActions> implements Redux.Store<TState> {
         this.initial = state;
     }
 
-    public dispatch(action: Action) {
-        this.redux.dispatch(action);
+    public dispatch<T>(action: Action<T>): Action<T> {
+        return this.redux.dispatch(action);
     }
 
     public getState(): TState {
@@ -57,7 +57,7 @@ export class Store<TState, TActions> implements Redux.Store<TState> {
     }
 
     private extendReducer(reducer: Reducer<TState>): Reducer<TState> {
-        return (state: TState, action: Action): TState => {
+        return (state: TState, action: Action<any>): TState => {
             if (action.type === PURGE)
                 return action.payload;
 
