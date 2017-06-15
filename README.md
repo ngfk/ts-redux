@@ -1,8 +1,13 @@
 # Ailurus TS-Redux
 
-![Npm version](https://img.shields.io/npm/v/@ailurus/ts-redux.svg)
+[![npm version](https://img.shields.io/npm/v/@ailurus/ts-redux.svg)](https://www.npmjs.com/package/@ailurus/ts-redux)
 
 Typescript wrapper for [Redux](https://github.com/reactjs/redux).
+
+### Installation
+```
+npm install --save @ailurus/ts-redux
+```
 
 ### Usage
 ```ts
