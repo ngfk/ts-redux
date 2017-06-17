@@ -27,10 +27,10 @@
   "homepage": "https://github.com/ngfk/ts-redux#readme",
   "devDependencies": {
     "rimraf": "^2.6.1",
-    "typescript": "^2.3.4"
+    "typescript": "^2.4.0"
   },
   "dependencies": {
-    "redux": "^3.6.0"
+    "redux": "^3.7.0"
   },
   "files": [
     "dist",
