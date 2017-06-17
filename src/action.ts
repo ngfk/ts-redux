@@ -4,7 +4,6 @@ export interface Action<T> {
     readonly payload: T;
 }
 
-export interface MappedAction<T extends string, P> extends Action<P> {
+export interface TypedAction<T extends string, P> extends Action<P> {
     readonly type: T;
-    readonly payload: P;
 }
