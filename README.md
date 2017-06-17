@@ -53,6 +53,11 @@ store.action('TODO_ADD').dispatch({ id: 0, text: 'My first TODO!' });
 
 ### Intellisense
 
+Try the [Demo](https://ngfk.github.io/ailurus-ts-redux)  
+
+Note: This web demo uses Microsoft's [Monaco Editor](https://microsoft.github.io/monaco-editor/). In [Visual Studio Code](https://code.visualstudio.com) you can press ctrl+space at `builder.case('` and `store.action('` for the correct intellisense (line 26 and 44 in the gif below), this however does not work in the web demo.
+
+#### VS Code experience
 ![intellisense-demo](images/intellisense-demo.gif)
 
 ### Examples
