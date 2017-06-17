@@ -43,7 +43,7 @@ export class Store<TState, TActions> implements Redux.Store<TState> {
         return this.redux.subscribe(listener);
     }
 
-    public replaceReducer(reducer: Reducer<TState>) {
+    public replaceReducer(reducer: Reducer<TState>): void {
         this.reducer = this.extendReducer(reducer);
         this.redux.replaceReducer(this.reducer);
     }

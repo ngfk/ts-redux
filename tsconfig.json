@@ -19,7 +19,7 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
-      "ts-redux": ["./"]
+      "@ailurus/ts-redux": ["./"]
     }
   },
   "include": [

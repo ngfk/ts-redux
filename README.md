@@ -1,8 +1,8 @@
 # Ailurus TS-Redux
 
-[![npm version](https://img.shields.io/npm/v/@ailurus/ts-redux.svg)](https://www.npmjs.com/package/@ailurus/ts-redux)
+Typescript wrapper for [Redux](https://github.com/reactjs/redux). Type safety and intellisense while creating reducers and when dispatching actions.
 
-Typescript wrapper for [Redux](https://github.com/reactjs/redux).
+[![npm version](https://img.shields.io/npm/v/@ailurus/ts-redux.svg)](https://www.npmjs.com/package/@ailurus/ts-redux)
 
 ### Installation
 ```

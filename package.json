@@ -13,7 +13,12 @@
     "type": "git",
     "url": "git+https://github.com/ngfk/ts-redux.git"
   },
-  "keywords": [],
+  "keywords": [
+    "typescript",
+    "redux",
+    "reducer",
+    "state"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
