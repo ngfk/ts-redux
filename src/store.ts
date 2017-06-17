@@ -1,4 +1,4 @@
-import { Store as ReduxStore, createStore, StoreEnhancer, Unsubscribe } from 'redux';
+import * as Redux from 'redux';
 
 import { ActionDispatcher } from './action-dispatcher';
 import { Action } from './action';
@@ -6,17 +6,17 @@ import { Reducer } from './reducer';
 
 const PURGE = '@@TSREDUX:PURGE';
 
-export class Store<TState, TActions> implements ReduxStore<TState> {
+export class Store<TState, TActions> implements Redux.Store<TState> {
 
-    protected redux: ReduxStore<TState>;
+    protected redux: Redux.Store<TState>;
     protected reducer: Reducer<TState>;
     private initial?: TState;
 
-    constructor(reducer: Reducer<TState>, initialState?: TState, enhancer?: StoreEnhancer<TState>) {
+    constructor(reducer: Reducer<TState>, initialState?: TState, enhancer?: Redux.StoreEnhancer<TState>) {
         this.reducer = this.extendReducer(reducer);
         this.initial = initialState;
 
-        this.redux = createStore<TState>(
+        this.redux = Redux.createStore<TState>(
             this.reducer,
             this.initialState,
             enhancer
@@ -39,7 +39,7 @@ export class Store<TState, TActions> implements ReduxStore<TState> {
         return this.redux.getState();
     }
 
-    public subscribe(listener: () => void): Unsubscribe {
+    public subscribe(listener: () => void): Redux.Unsubscribe {
         return this.redux.subscribe(listener);
     }
 
