@@ -1,4 +1,4 @@
-import { combineReducers as ReduxCombineReducers } from 'redux';
+import { combineReducers as ReduxCombineReducers, StoreEnhancer } from 'redux';
 
 import { Reducer } from './reducer';
 import { Store } from './store';
@@ -7,6 +7,13 @@ export const combineReducers = <T>(reducers: { [P in keyof T]: Reducer<any> }): 
     return ReduxCombineReducers<T>(reducers as any);
 }
 
-export const createStore = <TState, TActions>(reducer: Reducer<TState>, initial?: TState) => {
-    return new Store<TState, TActions>(reducer, initial);
+export interface StoreCreator {
+  <TState, TActions>(reducer: Reducer<TState>, enhancer?: StoreEnhancer<TState>): Store<TState, TActions>;
+  <TState, TActions>(reducer: Reducer<TState>, preloadedState: TState, enhancer?: StoreEnhancer<TState>): Store<TState, TActions>;
+}
+
+export const createStore: StoreCreator = <TState, TActions>(reducer: Reducer<TState>, initOrEnhancer?: TState | StoreEnhancer<TState>, enhancer?: StoreEnhancer<TState>) => {
+    return (typeof initOrEnhancer === 'function')
+        ? new Store<TState, TActions>(reducer, undefined, initOrEnhancer)
+        : new Store<TState, TActions>(reducer, initOrEnhancer, enhancer);
 }

@@ -1,4 +1,4 @@
-import { Store as ReduxStore, createStore, Unsubscribe } from 'redux';
+import { Store as ReduxStore, createStore, StoreEnhancer, Unsubscribe } from 'redux';
 
 import { ActionDispatcher } from './action-dispatcher';
 import { Action } from './action';
@@ -12,14 +12,14 @@ export class Store<TState, TActions> implements ReduxStore<TState> {
     protected reducer: Reducer<TState>;
     private initial?: TState;
 
-    constructor(reducer: Reducer<TState>, initialState?: TState) {
+    constructor(reducer: Reducer<TState>, initialState?: TState, enhancer?: StoreEnhancer<TState>) {
         this.reducer = this.extendReducer(reducer);
         this.initial = initialState;
 
         this.redux = createStore<TState>(
             this.reducer,
             this.initialState,
-            (window && (window as any).devToolsExtension) ? (window as any).devToolsExtension() : undefined
+            enhancer
         );
     }
 
