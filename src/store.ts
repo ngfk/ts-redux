@@ -62,6 +62,6 @@ export class Store<TState, TActions> implements Redux.Store<TState> {
                 return action.payload;
 
             return reducer(state, action);
-        }
+        };
     }
 }
