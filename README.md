@@ -56,7 +56,7 @@ interface Actions extends TodoActions, FilterActions { }
 The first entry in the mapping above represents an action with `TODO_ADD` as its type and a payload which holds an `id` and some `text`. Note that in order to combine mappings into a single larger mapping we can create an interface which extends the sub-mappings.
 
 ### 3. Create reducers
-With the state and the actions defined we can create our reducers. TS-Redux provides a ReducerBuilder to enforce type safety. The reducer builder takes the state/sub-state type and the corresponding action mapping. With this information the ReducerBuilder knows which types are available and what the corresponding payload is.
+With the state and the actions defined we can create our reducers. TS-Redux provides a ReducerBuilder to enforce type safety. The reducer builder takes the state/sub-state type and the corresponding action mapping. With this information the builder knows which types are available and what the corresponding payload is.
 
 ```typescript
 const todosReducer = new ReducerBuilder<Todo[], TodoActions>()
