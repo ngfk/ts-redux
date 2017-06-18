@@ -52,8 +52,8 @@ export class Store<TState, TActions> implements Redux.Store<TState> {
         this.redux.dispatch({ type: PURGE, payload: state });
     }
 
-    public action<T extends keyof TActions>(type: T): ActionDispatcher<TActions, T> {
-        return new ActionDispatcher<TActions, T>(this, type);
+    public action<T extends keyof TActions>(type: T): ActionDispatcher<TState, TActions, T> {
+        return new ActionDispatcher<TState, TActions, T>(this, type);
     }
 
     private extendReducer(reducer: Reducer<TState>): Reducer<TState> {
