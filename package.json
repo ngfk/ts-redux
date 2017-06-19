@@ -6,7 +6,9 @@
   "typings": "dist/index",
   "scripts": {
     "build": "tsc",
-    "watch": "tsc --watch",
+    "build:watch": "npm run build -- --watch",
+    "test": "mocha --compilers ts:ts-node/register -r tsconfig-paths/register test/**/*.spec.ts",
+    "test:watch": "npm run test -- --watch",
     "lint": "tslint -p tsconfig.json --type-check src/**/*.ts",
     "clean": "rimraf ./dist"
   },
@@ -27,7 +29,13 @@
   },
   "homepage": "https://github.com/ngfk/ts-redux#readme",
   "devDependencies": {
+    "@types/chai": "^4.0.0",
+    "@types/mocha": "^2.2.41",
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2",
     "rimraf": "^2.6.1",
+    "ts-node": "^3.0.6",
+    "tsconfig-paths": "^2.2.0",
     "tslint": "^5.4.3",
     "typescript": "^2.4.0"
   },
