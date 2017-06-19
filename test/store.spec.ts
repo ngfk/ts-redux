@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { Store } from '@ailurus/ts-redux';
+import { Store } from '../src';
 
 interface Todo {
     readonly id: number;

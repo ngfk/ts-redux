@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "module": "commonjs",
+    "lib": [
+      "es2015"
+    ],
     "declaration": true,
     "sourceMap": true,
     "outDir": "./dist",
@@ -22,7 +25,6 @@
     }
   },
   "include": [
-    "src",
-    "test"
+    "src"
   ]
 }
