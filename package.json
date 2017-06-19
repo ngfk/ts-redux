@@ -11,8 +11,7 @@
     "test:watch": "npm run test -- --watch",
     "lint": "tslint -p tsconfig.json --type-check src/**/*.ts",
     "clean": "rimraf ./dist",
-    "prepare": "npm run clean && npm run lint && npm run test && npm run build",
-    "publish": "npm run prepare && npm publish --access public"
+    "prepare": "npm run clean && npm run lint && npm run test && npm run build"
   },
   "repository": {
     "type": "git",
