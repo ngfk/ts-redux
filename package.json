@@ -10,7 +10,9 @@
     "test": "mocha --compilers ts:ts-node/register -r tsconfig-paths/register test/**/*.spec.ts",
     "test:watch": "npm run test -- --watch",
     "lint": "tslint -p tsconfig.json --type-check src/**/*.ts",
-    "clean": "rimraf ./dist"
+    "clean": "rimraf ./dist",
+    "prepare": "npm run clean && npm run lint && npm run test && npm run build",
+    "publish": "npm run prepare && npm publish --access public"
   },
   "repository": {
     "type": "git",
