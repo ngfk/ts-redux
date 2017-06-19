@@ -31,7 +31,7 @@ export class Store<TState, TActions> implements Redux.Store<TState> {
         this.initial = state;
     }
 
-    public dispatch<T>(action: Action<T>): Action<T> {
+    public dispatch<T extends Redux.Action>(action: T): T {
         return this.redux.dispatch(action);
     }
 
