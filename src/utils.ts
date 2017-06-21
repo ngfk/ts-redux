@@ -1,7 +1,20 @@
 import * as Redux from 'redux';
 
-import { Reducer } from './reducer';
+import { Reducer, SubReducer } from './reducer';
+import { ReducerBuilder } from './reducer-builder';
 import { Store } from './store';
+
+export const createReducer = <TState, TMapping>(
+    initial: TState,
+    cases: { [Type in keyof TMapping]: SubReducer<TState, TMapping, Type> }
+    ): Reducer<TState> =>
+{
+    let builder = new ReducerBuilder<TState, TMapping>().init(initial);
+    Object.keys(cases).forEach(type => {
+        builder.case(type as keyof TMapping, cases[type]);
+    });
+    return builder.build();
+};
 
 export const combineReducers = <T>(reducers: { [P in keyof T]: Reducer<T[P]> }): Reducer<T> => {
     return Redux.combineReducers<T>(reducers as any);
