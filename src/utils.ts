@@ -3,7 +3,7 @@ import * as Redux from 'redux';
 import { Reducer } from './reducer';
 import { Store } from './store';
 
-export const combineReducers = <T>(reducers: { [P in keyof T]: Reducer<any> }): Reducer<T> => {
+export const combineReducers = <T>(reducers: { [P in keyof T]: Reducer<T[P]> }): Reducer<T> => {
     return Redux.combineReducers<T>(reducers as any);
 };
 
