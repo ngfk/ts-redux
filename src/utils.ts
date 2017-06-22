@@ -10,9 +10,8 @@ export const createReducer = <TState, TMapping>(
     ): Reducer<TState> =>
 {
     let builder = new ReducerBuilder<TState, TMapping>().init(initial);
-    Object.keys(cases).forEach(type => {
+    for (let type of Object.keys(cases))
         builder.case(type as keyof TMapping, cases[type]);
-    });
     return builder.build();
 };
 
