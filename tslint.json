@@ -3,7 +3,7 @@
   "rules": {
 
     // Typescript specific
-    "member-access": [ true, "check-accessor" ],
+    "member-access": [true, "check-accessor"],
     "member-ordering": [
       true,
       {
@@ -24,12 +24,12 @@
         ]
       }
     ],
-    "no-inferrable-types": [ true ],
+    "no-inferrable-types": [true],
     "no-internal-module": true,
-    "no-namespace": [ true ],
+    "no-namespace": [true],
     "no-reference": true,
     "no-var-requires": true,
-    "only-arrow-functions": [ true ],
+    "only-arrow-functions": [true],
     "prefer-for-of": true,
 
     // Functionality
@@ -42,7 +42,7 @@
     "no-empty": true,
     "no-eval": true,
     "no-for-in-array": true,
-    "no-invalid-this": [ true ],
+    "no-invalid-this": [true],
     "no-null-keyword": true,
     "no-shadowed-variable": true,
     "no-switch-case-fall-through": true,
@@ -51,35 +51,35 @@
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "radix": true,
-    "triple-equals": [ true ],
+    "triple-equals": [true],
     "use-isnan": true,
 
     // Maintainability
     "eofline": true,
-    "indent": [ true, "spaces" ],
-    "max-line-length": [ true, 120 ],
+    "indent": [true, "spaces"],
+    "max-line-length": [true, 120],
     "no-default-export": true,
     "no-mergeable-namespace": true,
     "no-require-imports": true,
     "no-trailing-whitespace": true,
-    "trailing-comma": [ false ],
+    "trailing-comma": [false],
 
     // Style
-    "align": [ true ],
-    "array-type": [ true, "array" ],
-    "arrow-parens": [ true, "ban-single-arg-parens" ],
+    "align": [true],
+    "array-type": [true, "array"],
+    "arrow-parens": [true, "ban-single-arg-parens"],
     "class-name": true,
-    "comment-format": [ true, "check-space" ],
-    // "interface-name": [ true, "always-prefix" ],
+    "comment-format": [true, "check-space"],
+    // "interface-name": [true, "always-prefix"],
     "jsdoc-format": true,
     "new-parens": true,
     "no-angle-bracket-type-assertion": true,
-    "no-consecutive-blank-lines": [ true ],
-    "object-literal-key-quotes": [ true, "consistent-as-needed" ],
+    "no-consecutive-blank-lines": [true],
+    "object-literal-key-quotes": [true, "consistent-as-needed"],
     "object-literal-shorthand": true,
-    "quotemark": [ true, "single" ],
-    "semicolon": [ true, "always" ],
-    "variable-name": [ true, "check-format", "ban-keywords" ],
+    "quotemark": [true, "single"],
+    "semicolon": [true, "always"],
+    "variable-name": [true, "check-format", "ban-keywords"],
     "whitespace": [
       true,
       "check-branch",
