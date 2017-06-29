@@ -75,7 +75,7 @@
     "new-parens": true,
     "no-angle-bracket-type-assertion": true,
     "no-consecutive-blank-lines": [true],
-    "object-literal-key-quotes": [true, "consistent-as-needed"],
+    "object-literal-key-quotes": [true, "consistent"],
     "object-literal-shorthand": true,
     "quotemark": [true, "single"],
     "semicolon": [true, "always"],
