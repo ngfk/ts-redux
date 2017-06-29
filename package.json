@@ -30,16 +30,16 @@
   },
   "homepage": "https://github.com/ngfk/ts-redux#readme",
   "devDependencies": {
-    "@types/chai": "^4.0.0",
+    "@types/chai": "^4.0.1",
     "@types/mocha": "^2.2.41",
     "chai": "^4.0.2",
     "mocha": "^3.4.2",
-    "redux": "^3.7.0",
+    "redux": "^3.7.1",
     "rimraf": "^2.6.1",
     "ts-node": "^3.0.6",
     "tsconfig-paths": "^2.2.0",
     "tslint": "^5.4.3",
-    "typescript": "^2.4.0"
+    "typescript": "^2.4.1"
   },
   "peerDependencies": {
     "redux": ">= 3.4.0"

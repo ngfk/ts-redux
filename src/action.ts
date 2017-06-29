@@ -1,5 +1,6 @@
+import * as Redux from 'redux';
 
-export interface Action<T> {
+export interface Action<T> extends Redux.Action {
     readonly type: string;
     readonly payload: T;
 }

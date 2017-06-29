@@ -1,6 +1,7 @@
+import * as Redux from 'redux';
 import { Action, TypedAction } from './action';
 
-export interface Reducer<TState> {
+export interface Reducer<TState> extends Redux.Reducer<TState> {
     (state: TState, action: Action<any>): TState;
 }
 
