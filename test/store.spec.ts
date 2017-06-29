@@ -16,7 +16,7 @@ describe('Store', () => {
 
     it('respect the initial state', () => {
         // Initial state set by reducer
-        const store1 = new Store<Todo[], TodoActions>(s => s);
+        const store1 = new Store<Todo[], TodoActions>((s: Todo[]) => s);
         expect(store1.initialState).eq(undefined);
         expect(store1.getState()).eq(undefined);
 
@@ -32,13 +32,13 @@ describe('Store', () => {
 
         // Initial state set when creating store
         const initial4 = [] as Todo[];
-        const store4   = new Store<Todo[], TodoActions>(s => s, initial4);
+        const store4   = new Store<Todo[], TodoActions>((s: Todo[]) => s, initial4);
         expect(store4.initialState).eq(initial4);
         expect(store4.getState()).eq(initial4);
 
         // Set state after creation without modifying the current state
         const initial5 = [] as Todo[];
-        const store5   = new Store<Todo[], TodoActions>(s => s);
+        const store5   = new Store<Todo[], TodoActions>((s: Todo[]) => s);
         expect(store5.initialState).eq(undefined);
         expect(store5.getState()).eq(undefined);
         store5.initialState = initial5;
@@ -48,7 +48,7 @@ describe('Store', () => {
 
     it('purge to the initial state', () => {
         const initial = [] as Todo[];
-        const store   = new Store<Todo[], TodoActions>(s => s);
+        const store   = new Store<Todo[], TodoActions>((s: Todo[]) => s);
 
         expect(store.getState()).eq(undefined);
         store.purge();
@@ -60,7 +60,7 @@ describe('Store', () => {
     });
 
     it('purge to given state', () => {
-        const store = new Store<Todo[], TodoActions>(s => s, []);
+        const store = new Store<Todo[], TodoActions>((s: Todo[]) => s, []);
 
         expect(store.getState()).eql([]);
         store.purge();

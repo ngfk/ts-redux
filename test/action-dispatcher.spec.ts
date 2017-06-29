@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { ActionDispatcher, Store, Action } from '../src';
+import { ActionDispatcher, Store } from '../src';
 
 interface Todo {
     readonly id: number;
@@ -15,10 +15,10 @@ interface TodoActions {
 describe('ActionDispatcher', () => {
 
     it('forward ActionDispatcher.dispatch to Store.dispatch', () => {
-        const store = new Store<Todo[], TodoActions>(s => s);
+        const store = new Store<Todo[], TodoActions>((s: Todo[]) => s);
 
         let triggered = false;
-        store.dispatch = (action: Action<{ id: number, text: string }>) => {
+        store.dispatch = (action: any) => {
             triggered = true;
             return Store.prototype.dispatch.call(store, action);
         };
@@ -30,13 +30,13 @@ describe('ActionDispatcher', () => {
     });
 
     it('dispatch the correct action', () => {
-        const store = new Store<Todo[], TodoActions>(s => s);
+        const store = new Store<Todo[], TodoActions>((s: Todo[]) => s);
         type  Type = 'TODO_ADD';
         const type = 'TODO_ADD';
         const id   = 23;
         const text = 'Some Todo text';
 
-        store.dispatch = (action: Action<{id: number, text: string }>) => {
+        store.dispatch = (action: any) => {
             // tslint:disable no-unused-expression
             expect(action.type).exist;
             expect(action.payload).exist;
@@ -55,7 +55,7 @@ describe('ActionDispatcher', () => {
     });
 
     it('return the Store on dispatch', () => {
-        const store = new Store<Todo[], TodoActions>(s => s);
+        const store = new Store<Todo[], TodoActions>((s: Todo[]) => s);
         const dispatcher = new ActionDispatcher<Todo[], TodoActions, 'TODO_ADD'>(store, 'TODO_ADD');
         expect(dispatcher.dispatch({ id: 0, text: '' })).eq(store);
     });
