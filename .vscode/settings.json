@@ -1,0 +1,11 @@
+{
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "typescript.check.tscVersion": false,
+
+    "tslint.enable": true,
+    "tslint.configFile": "./tslint.json",
+    "tslint.nodePath": "./node_modules/tslint/lib",
+    
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+}
