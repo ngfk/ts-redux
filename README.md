@@ -3,7 +3,7 @@
 Typescript wrapper for [Redux](https://github.com/reactjs/redux). Type safety and intellisense when creating reducers and dispatching actions.
 
 [![npm version](https://img.shields.io/npm/v/@ailurus/ts-redux.svg)](https://www.npmjs.com/package/@ailurus/ts-redux)
-[![Downloads](https://img.shields.io/npm/dt/@ailurus/ts-redux.svg)](https://www.npmjs.com/package/webpack-clicknow-angular)
+[![Downloads](https://img.shields.io/npm/dt/@ailurus/ts-redux.svg)](https://www.npmjs.com/package/@ailurus/ts-redux)
 
 ## Installation
 ```
