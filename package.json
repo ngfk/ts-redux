@@ -1,6 +1,6 @@
 {
   "name": "@ailurus/ts-redux",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "",
   "main": "dist/index",
   "typings": "dist/index",
