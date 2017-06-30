@@ -58,7 +58,7 @@ const reducer = combineReducers<State>({
 const store = createStore<State, Actions>(reducer);
 
 // Not type safe
-store.dispatch({ type: '' });
+store.dispatch({ type: 'ANYTHING' });
 
 // Type safe
 store.action('TODO_ADD').dispatch({ id: 1, text: 'My first TODO!' });
