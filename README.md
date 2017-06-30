@@ -20,7 +20,7 @@ npm install @ailurus/ts-redux redux
 4. Create store
 
 ### 1. Define state structure
-Using TS-Redux starts with defining the state structure. An immutable state can be accomplished in typescript by making all the properties `readonly`.
+Using TS-Redux starts with defining the state structure. An immutable state can be accomplished in typescript by making all properties `readonly`.
 
 ```typescript
 interface Todo {
@@ -59,7 +59,7 @@ interface Actions extends TodoActions, FilterActions { }
 The first entry in the mapping above represents an action with `TODO_ADD` as its type and a payload which holds an `id` and some `text`. Note that in order to combine mappings into a single larger mapping we can create an interface which extends the sub-mappings.
 
 ### 3. Create reducers
-With the state and the actions defined we can create our reducers. TS-Redux provides a `createReducer` function which when called with the state and action mapping provide the right type safety. This function takes the initial state as the first parameter and a 'sub-reducer' mapping as the second parameter. A sub-reducer, in this case, can be compared to one case in a standard redux reducer, the sub-reducer takes the state and the action payload and returns the new state. Typescript will only accept the mapped sub-reducers if every defined action is mapped to a sub-reducer. At this stage the state and payload types are known.
+With the state and the actions defined we can create our reducers. TS-Redux provides a `createReducer` function, this function takes the initial state as the first parameter and a 'sub-reducer' mapping as the second parameter. A sub-reducer can be compared to one case in a standard redux reducer, the sub-reducer takes the state and the action payload and returns the new state. The compiler will only accept the mapped sub-reducers if every defined action is mapped to a sub-reducer. At this stage the state and payload types are known.
 
 ```typescript
 const todoReducer = createReducer<Todo[], TodoActions>([], {
@@ -82,7 +82,7 @@ const filterReducer = createReducer<Filter, FilterActions>(Filter.All, {
 });
 ```
 
-After creating our reducers we can combine them with the `combineReducers` function. Since we specify the reducer type we wish to create the `combineReducers` function will only accept its parameter if it has all the required properties mapped to the correct (sub)reducer type.
+After creating our reducers we can combine them with the `combineReducers` function. Since we specify the reducer type we wish to create the `combineReducers` function will only accept its parameter if it has all the required properties mapped to the correct reducer type.
 
 ```typescript
 const reducer = combineReducers<State>({
@@ -91,7 +91,7 @@ const reducer = combineReducers<State>({
 });
 ```
 
-If you need more control when creating reducers you can also use the `ReducerBuilder` class. This builder has the same type checks in place but does not require you to define an initial state or handle every mapped action.
+> If you need more control when creating reducers you can also use the `ReducerBuilder` class. This builder has the same type checks in place but does not require you to define an initial state or to handle every mapped action.
 
 ### 4. Create store
 With the root reducer we can finally create our store. We provide the state type and the action mapping while creating our store so that the store knows which action types can be dispatched, and what the corresponding payload type is.
