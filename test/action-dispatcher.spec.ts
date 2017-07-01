@@ -54,9 +54,14 @@ describe('ActionDispatcher', () => {
             .dispatch({ id, text });
     });
 
-    it('return the Store on dispatch', () => {
+    it('return the action on dispatch', () => {
         const store = new Store<Todo[], TodoActions>((s: Todo[]) => s);
         const dispatcher = new ActionDispatcher<Todo[], TodoActions, 'TODO_ADD'>(store, 'TODO_ADD');
-        expect(dispatcher.dispatch({ id: 0, text: '' })).eq(store);
+        const action = dispatcher.dispatch({ id: 0, text: '' });
+
+        // tslint:disable no-unused-expression
+        expect(action.type).exist;
+        expect(action.payload).exist;
+        // tslint:enable no-unused-expression
     });
 });
