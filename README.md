@@ -4,7 +4,7 @@ Typescript wrapper for [Redux](https://github.com/reactjs/redux). Type safety an
 
 [![npm version](https://img.shields.io/npm/v/@ailurus/ts-redux.svg)](https://www.npmjs.com/package/@ailurus/ts-redux)
 [![Downloads](https://img.shields.io/npm/dt/@ailurus/ts-redux.svg)](https://www.npmjs.com/package/@ailurus/ts-redux)
-[![Travis CI](https://travis-ci.org/ngfk/ts-redux.svg?branch=master)](https://travis-ci.org/ngfk/ts-redux)
+[![Travis CI](https://travis-ci.org/ngfk/ts-redux.svg?branch=v1.3.0)](https://travis-ci.org/ngfk/ts-redux)
 
 ## Installation
 ```
