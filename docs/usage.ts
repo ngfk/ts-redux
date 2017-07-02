@@ -57,7 +57,7 @@ const reducer = combineReducers<State>({
 // 4. Create store
 const store = createStore<State, Actions>(reducer);
 
-// Not type safe
+// No type safety
 store.dispatch({ type: 'ANYTHING' });
 
 // Type safe
