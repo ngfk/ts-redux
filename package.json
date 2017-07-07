@@ -1,7 +1,7 @@
 {
   "name": "@ailurus/ts-redux",
   "version": "1.3.0",
-  "description": "",
+  "description": "Typescript wrapper for Redux. Type safety and intellisense when creating reducers and dispatching actions.",
   "main": "dist/index",
   "typings": "dist/index",
   "scripts": {
