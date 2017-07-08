@@ -5,6 +5,7 @@
   "main": "dist/index",
   "typings": "dist/index",
   "scripts": {
+    "start": "npm run test:watch",
     "build": "tsc",
     "build:watch": "npm run build -- --watch",
     "test": "mocha --compilers ts:ts-node/register -r tsconfig-paths/register test/**/*.spec.ts",
