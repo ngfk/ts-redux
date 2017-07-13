@@ -9,7 +9,7 @@ export interface ActionMetadata {
     readonly [properties: string]: any;
 }
 
-export interface Action<T> extends Redux.Action {
+export interface Action<T> extends Redux.AnyAction {
     readonly type: string;
     readonly payload: T;
     readonly error?: ActionError;
