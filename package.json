@@ -8,7 +8,7 @@
     "start": "npm run test:watch",
     "build": "tsc",
     "build:watch": "npm run build -- --watch",
-    "test": "mocha --compilers ts:ts-node/register -r tsconfig-paths/register test/**/*.spec.ts",
+    "test": "mocha --compilers ts:ts-node/register test/**/*.spec.ts",
     "test:watch": "npm run test -- --watch",
     "lint": "tslint -p tsconfig.json --type-check src/**/*.ts",
     "clean": "rimraf ./dist",
@@ -40,7 +40,6 @@
     "redux": "^3.7.1",
     "rimraf": "^2.6.1",
     "ts-node": "^3.2.0",
-    "tsconfig-paths": "^2.2.0",
     "tslint": "^5.5.0",
     "typescript": "^2.4.1"
   },
