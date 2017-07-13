@@ -22,7 +22,12 @@ export class ReducerBuilder<TState, TMapping> {
     }
 
     public build(): Reducer<TState> {
-        return (state: TState = this.initial, action: TypedAction<any, any> = { type: '', payload: undefined }) => {
+        const initialAction: TypedAction<any, any> = {
+            type: '',
+            payload: undefined
+        };
+
+        return (state = this.initial, action = initialAction as any): TState => {
             const handler = this.cases[action.type];
             return handler ? handler(state, action.payload, action) : state;
         };
