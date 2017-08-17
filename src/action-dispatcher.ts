@@ -1,5 +1,5 @@
-import { TypedAction } from './action';
 import { Store } from './store';
+import { TypedAction } from './action';
 
 export class ActionDispatcher<TState, TActions, T extends keyof TActions> {
 

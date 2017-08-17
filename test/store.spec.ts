@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+
 import { Store } from '../src';
 
 interface Todo {

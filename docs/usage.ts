@@ -1,4 +1,4 @@
-import { createReducer, combineReducers, createStore } from '../src';
+import { combineReducers, createReducer, createStore } from '../src';
 
 // 1. Define state
 interface Todo {

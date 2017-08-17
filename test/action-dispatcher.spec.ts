@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+
 import { ActionDispatcher, Store } from '../src';
 
 interface Todo {

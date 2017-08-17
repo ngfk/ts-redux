@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+
 import { Reducer, ReducerBuilder } from '../src';
 
 interface Todo {
