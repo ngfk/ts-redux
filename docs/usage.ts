@@ -1,3 +1,4 @@
+import { ActionFactory } from '../src/action-factory';
 import { combineReducers } from '../src/combine-reducers';
 import { createReducer } from '../src/create-reducer';
 import { createStore } from '../src/create-store';
@@ -19,20 +20,34 @@ interface State {
 }
 
 // 2. Map actions
-interface TodoActions {
+interface TodoActionMap {
     'TODO_ADD': { id: number, text: string };
     'TODO_TOGGLE': number;
     'TODO_REMOVE': number;
 }
 
-interface FilterActions {
+interface FilterActionMap {
     'FILTER_SET': Filter;
 }
 
-interface Actions extends TodoActions, FilterActions { }
+interface ActionMap extends TodoActionMap, FilterActionMap { }
+
+// Optionally, define action creators for use with react-redux
+// Example react project at https://github.com/ngfk/todomvc-react-ts-redux
+const todoFactory = new ActionFactory<TodoActionMap>();
+const todoActionCreators = {
+    todoAdd: todoFactory.creator('TODO_ADD'),
+    todoToggle: todoFactory.creator('TODO_TOGGLE'),
+    todoRemove: todoFactory.creator('TODO_REMOVE'),
+};
+
+const filterFactory = new ActionFactory<FilterActionMap>();
+const filterActionCreators = {
+    setFilter: filterFactory.creator('FILTER_SET'),
+};
 
 // 3. Create reducers
-const todoReducer = createReducer<Todo[], TodoActions>([], {
+const todoReducer = createReducer<Todo[], TodoActionMap>([], {
     'TODO_ADD': (state, payload) => [
         ...state,
         { id: payload.id, text: payload.text, completed: false }
@@ -47,7 +62,7 @@ const todoReducer = createReducer<Todo[], TodoActions>([], {
     }
 });
 
-const filterReducer = createReducer<Filter, FilterActions>(Filter.All, {
+const filterReducer = createReducer<Filter, FilterActionMap>(Filter.All, {
     'FILTER_SET': (_, payload) => payload
 });
 
@@ -57,7 +72,7 @@ const reducer = combineReducers<State>({
 });
 
 // 4. Create store
-const store = createStore<State, Actions>(reducer);
+const store = createStore<State, ActionMap>(reducer);
 
 // No type safety
 store.dispatch({ type: 'ANYTHING' });
