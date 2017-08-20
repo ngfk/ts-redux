@@ -1,5 +1,6 @@
 import * as Redux from 'redux';
 
+import { ActionCreator } from './action-creator';
 import { Reducer, SubReducer } from './reducer';
 import { ReducerBuilder } from './reducer-builder';
 import { Store } from './store';
@@ -41,4 +42,12 @@ export const createStore: StoreCreator = <TState, TActions>(
     return (typeof initOrEnhancer === 'function')
         ? new Store<TState, TActions>(reducer, undefined, initOrEnhancer)
         : new Store<TState, TActions>(reducer, initOrEnhancer, enhancer);
+};
+
+export const bindActionCreators = (
+    creators: { [creator: string]: ActionCreator<any, any> },
+    dispatcher: Redux.Dispatch<any>
+    ) =>
+{
+    return Redux.bindActionCreators(creators, dispatcher);
 };
