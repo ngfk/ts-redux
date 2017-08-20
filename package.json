@@ -1,6 +1,6 @@
 {
   "name": "@ngfk/ts-redux",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "Typescript wrapper for Redux. Type safety and intellisense when creating reducers and dispatching actions.",
   "main": "dist/index",
   "typings": "index.d.ts",
