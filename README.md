@@ -1,11 +1,11 @@
-# Ailurus TS-Redux
+# TS-Redux
 
 Typescript wrapper for [Redux](https://github.com/reactjs/redux). Type safety and intellisense when creating reducers and dispatching actions.
 
 > This project was originally named `@ailurus/ts-redux`.
 
-[![npm version](https://img.shields.io/npm/v/@ngfk/ts-redux.svg)](https://www.npmjs.com/package/@ailurus/ts-redux)
-[![Downloads](https://img.shields.io/npm/dt/@ngfk/ts-redux.svg)](https://www.npmjs.com/package/@ailurus/ts-redux)
+[![npm version](https://img.shields.io/npm/v/@ngfk/ts-redux.svg)](https://www.npmjs.com/package/@ngfk/ts-redux)
+[![Downloads](https://img.shields.io/npm/dt/@ngfk/ts-redux.svg)](https://www.npmjs.com/package/@ngfk/ts-redux)
 [![Travis CI](https://travis-ci.org/ngfk/ts-redux.svg?branch=master)](https://travis-ci.org/ngfk/ts-redux)
 
 ## Installation
