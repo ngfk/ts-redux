@@ -18,24 +18,24 @@ export class Store<TState, TActions> implements Redux.Store<TState> {
         );
     }
 
-    public dispatch<T extends Redux.Action>(action: T): T {
+    public dispatch = <T extends Redux.Action>(action: T): T => {
         return this.redux.dispatch(action);
     }
 
-    public getState(): TState {
+    public getState = (): TState => {
         return this.redux.getState();
     }
 
-    public subscribe(listener: () => void): Redux.Unsubscribe {
+    public subscribe = (listener: () => void): Redux.Unsubscribe => {
         return this.redux.subscribe(listener);
     }
 
-    public replaceReducer(reducer: Reducer<TState>): void {
+    public replaceReducer = (reducer: Reducer<TState>): void => {
         this.reducer = reducer;
         this.redux.replaceReducer(this.reducer);
     }
 
-    public action<T extends keyof TActions>(type: T): ActionDispatcher<TState, TActions, T> {
+    public action = <T extends keyof TActions>(type: T): ActionDispatcher<TState, TActions, T> => {
         return new ActionDispatcher<TState, TActions, T>(this, type);
     }
 }
