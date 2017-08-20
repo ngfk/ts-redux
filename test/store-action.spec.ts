@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { ActionDispatcher, Store } from '../src';
+import { Store, StoreAction } from '../src/store';
 
 interface Todo {
     readonly id: number;
@@ -13,18 +13,19 @@ interface TodoActions {
     'TODO_REMOVE': number;
 }
 
-describe('ActionDispatcher', () => {
+describe('StoreAction', () => {
 
-    it('forward ActionDispatcher.dispatch to Store.dispatch', () => {
+    it('forward StoreAction.dispatch to Store.dispatch', () => {
         const store = new Store<Todo[], TodoActions>((s: Todo[]) => s);
 
         let triggered = false;
+        const originalDispatch = store.dispatch;
         store.dispatch = (action: any) => {
             triggered = true;
-            return Store.prototype.dispatch.call(store, action);
+            return originalDispatch(action);
         };
 
-        new ActionDispatcher<Todo[], TodoActions, 'TODO_ADD'>(store, 'TODO_ADD')
+        new StoreAction<Todo[], TodoActions, 'TODO_ADD'>(store, 'TODO_ADD')
             .dispatch({ id: 0, text: '' });
 
         expect(triggered).eq(true);
@@ -37,6 +38,7 @@ describe('ActionDispatcher', () => {
         const id   = 23;
         const text = 'Some Todo text';
 
+        const originalDispatch = store.dispatch;
         store.dispatch = (action: any) => {
             // tslint:disable no-unused-expression
             expect(action.type).exist;
@@ -48,16 +50,16 @@ describe('ActionDispatcher', () => {
             expect(action.type).eq(type);
             expect(action.payload).eql({ id, text });
 
-            return Store.prototype.dispatch.call(store, action);
+            return originalDispatch(action);
         };
 
-        new ActionDispatcher<Todo[], TodoActions, Type>(store, type)
+        new StoreAction<Todo[], TodoActions, Type>(store, type)
             .dispatch({ id, text });
     });
 
     it('return the action on dispatch', () => {
         const store = new Store<Todo[], TodoActions>((s: Todo[]) => s);
-        const dispatcher = new ActionDispatcher<Todo[], TodoActions, 'TODO_ADD'>(store, 'TODO_ADD');
+        const dispatcher = new StoreAction<Todo[], TodoActions, 'TODO_ADD'>(store, 'TODO_ADD');
         const action = dispatcher.dispatch({ id: 0, text: '' });
 
         // tslint:disable no-unused-expression

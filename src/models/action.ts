@@ -1,4 +1,4 @@
-import * as Redux from 'redux';
+import { AnyAction } from 'redux';
 
 export interface ActionError {
     readonly message: string;
@@ -9,13 +9,13 @@ export interface ActionMetadata {
     readonly [properties: string]: any;
 }
 
-export interface Action<T> extends Redux.AnyAction {
+export interface Action<Payload = {}> extends AnyAction {
     readonly type: string;
-    readonly payload: T;
+    readonly payload: Payload;
     readonly error?: ActionError;
     readonly meta?: ActionMetadata;
 }
 
-export interface TypedAction<T extends string, P> extends Action<P> {
-    readonly type: T;
+export interface TypedAction<Type extends string, Payload = {}> extends Action<Payload> {
+    readonly type: Type;
 }

@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 
-import { Reducer, ReducerBuilder } from '../src';
+import { Reducer } from '../src/models/reducer';
+import { ReducerBuilder } from '../src/reducer-builder';
 
 interface Todo {
     readonly id: number;

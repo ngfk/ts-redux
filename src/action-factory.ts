@@ -1,8 +1,8 @@
-import { ActionCreator } from './action-creator';
+import { ActionCreator } from './models/action-creator';
 
-export class ActionFactory<M> {
+export class ActionFactory<ActionMap> {
 
-    public create<T extends keyof M>(type: T): ActionCreator<T, M[T]> {
+    public creator<Type extends keyof ActionMap>(type: Type): ActionCreator<Type, ActionMap[Type]> {
         return payload => ({ type, payload });
     }
 }

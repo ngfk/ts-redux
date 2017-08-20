@@ -1,33 +1,33 @@
-import { TypedAction } from './action';
-import { Reducer, SubReducer } from './reducer';
+import { Action } from './models/action';
+import { Reducer, SubReducer } from './models/reducer';
 
-export class ReducerBuilder<TState, TMapping> {
+export class ReducerBuilder<State, ActionMap> {
 
-    private initial: TState;
-    private cases: { [type: string]: SubReducer<TState, TMapping, keyof TMapping> } = {};
+    private initial: State;
+    private cases: { [type: string]: SubReducer<State, ActionMap, keyof ActionMap> } = {};
 
-    public init(state: TState): this {
+    public init(state: State): this {
         this.initial = state;
         return this;
     }
 
-    public case<Type extends keyof TMapping>(type: Type, reducer: SubReducer<TState, TMapping, Type>): this {
+    public case<Type extends keyof ActionMap>(type: Type, reducer: SubReducer<State, ActionMap, Type>): this {
         this.cases[type] = reducer;
         return this;
     }
 
-    public external(type: string, reducer: SubReducer<TState, any, any>): this {
+    public external(type: string, reducer: SubReducer<State, any, any>): this {
         this.cases[type] = reducer;
         return this;
     }
 
-    public build(): Reducer<TState> {
-        const initialAction: TypedAction<any, any> = {
+    public build(): Reducer<State> {
+        const initialAction: Action<any> = {
             type: '',
-            payload: undefined
+            payload: {}
         };
 
-        return (state = this.initial, action = initialAction as any): TState => {
+        return (state = this.initial, action = initialAction as any): State => {
             const handler = this.cases[action.type];
             return handler ? handler(state, action.payload, action) : state;
         };

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { Store } from '../src';
+import { Store } from '../src/store';
 
 interface Todo {
     readonly id: number;
