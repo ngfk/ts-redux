@@ -7,6 +7,6 @@ export const createReducer = <State, ActionMap>(
     ): Reducer<State> =>
 {
     let builder = new ReducerBuilder<State, ActionMap>().init(initial);
-    Object.keys(cases).forEach(type => builder.case(type as keyof ActionMap, cases[type]));
+    Object.keys(cases).forEach((type: keyof ActionMap) => builder.case(type, cases[type]));
     return builder.build();
 };
