@@ -8,8 +8,10 @@
         "node_modules": true
     },
 
+    "editor.formatOnSave": true,
+    "typescriptHero.resolver.organizeOnSave": true,
+
     "typescript.tsdk": "./node_modules/typescript/lib",
-    "typescript.check.tscVersion": false,
 
     "tslint.enable": true,
     "tslint.configFile": "./tslint.json",
