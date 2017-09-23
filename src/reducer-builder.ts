@@ -2,7 +2,6 @@ import { Action } from './models/action';
 import { Reducer, SubReducer } from './models/reducer';
 
 export class ReducerBuilder<State, ActionMap> {
-
     private initial: State;
     private cases: { [type: string]: SubReducer<State, ActionMap, keyof ActionMap> } = {};
 
