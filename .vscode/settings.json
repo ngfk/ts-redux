@@ -25,5 +25,5 @@
     "typescriptHero.resolver.disableImportsSorting": false,
     "typescriptHero.resolver.multiLineTrailingComma": false,
     "typescriptHero.resolver.organizeOnSave": true,
-    "typescriptHero.resolver.multiLineWrapThreshold": 120
+    "typescriptHero.resolver.multiLineWrapThreshold": 80
 }

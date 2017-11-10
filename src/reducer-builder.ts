@@ -16,7 +16,7 @@ export class ReducerBuilder<State, ActionMap> {
         type: Type,
         reducer: SubReducer<State, ActionMap, Type>
     ): this {
-        this.cases[type] = reducer;
+        this.cases[type] = reducer as any;
         return this;
     }
 

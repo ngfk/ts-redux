@@ -1,22 +1,28 @@
-import { Action as ReduxAction, createStore, Store as ReduxStore, StoreEnhancer, Unsubscribe } from 'redux';
+import {
+    Action as ReduxAction,
+    createStore,
+    Store as ReduxStore,
+    StoreEnhancer,
+    Unsubscribe
+} from 'redux';
 
 import { TypedAction } from './models/action';
 import { Reducer } from './models/reducer';
 
 export class Store<State, ActionMap> implements ReduxStore<State> {
     protected redux: ReduxStore<State>;
-    private initial?: State;
+    protected initial?: State;
 
     constructor(
         protected reducer: Reducer<State>,
-        initialState?: State,
+        initial?: State,
         enhancer?: StoreEnhancer<State>
     ) {
-        this.initial = initialState;
+        this.initial = initial || reducer();
 
         this.redux = createStore<State>(
             this.reducer,
-            initialState ||
+            initial ||
                 (this.reducer as Reducer<any>)(undefined, {
                     type: '',
                     payload: undefined
