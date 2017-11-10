@@ -2,8 +2,6 @@
 
 Typescript wrapper for [Redux](https://github.com/reactjs/redux). Type safety and intellisense when creating reducers and dispatching actions.
 
-> This project was originally named `@ailurus/ts-redux`.
-
 [![npm version](https://img.shields.io/npm/v/@ngfk/ts-redux.svg)](https://www.npmjs.com/package/@ngfk/ts-redux)
 [![Downloads](https://img.shields.io/npm/dt/@ngfk/ts-redux.svg)](https://www.npmjs.com/package/@ngfk/ts-redux)
 [![Travis CI](https://travis-ci.org/ngfk/ts-redux.svg?branch=master)](https://travis-ci.org/ngfk/ts-redux)
@@ -32,7 +30,9 @@ interface Todo {
 }
 
 enum Filter {
-    All, Completed, Active
+    All,
+    Completed,
+    Active
 }
 
 interface State {
@@ -46,16 +46,16 @@ After defining the state you need to create an action map. This is done using an
 
 ```typescript
 interface TodoActionMap {
-    'TODO_ADD': { id: number, text: string };
-    'TODO_TOGGLE': number;
-    'TODO_REMOVE': number;
+    TODO_ADD: { id: number; text: string };
+    TODO_TOGGLE: number;
+    TODO_REMOVE: undefined;
 }
 
 interface FilterActionMap {
-    'FILTER_SET': Filter;
+    FILTER_SET: Filter;
 }
 
-interface ActionMap extends TodoActionMap, FilterActionMap { }
+interface ActionMap extends TodoActionMap, FilterActionMap {}
 ```
 
 The first entry in `TodoActions` represents an action with `TODO_ADD` as its type with a payload object holding an `id` and some `text`. Note that in order to combine mappings into a single larger mapping we can create an interface that extends the other mappings.
@@ -68,12 +68,12 @@ const todoFactory = new ActionFactory<TodoActionMap>();
 const todoActionCreators = {
     todoAdd: todoFactory.creator('TODO_ADD'),
     todoToggle: todoFactory.creator('TODO_TOGGLE'),
-    todoRemove: todoFactory.creator('TODO_REMOVE'),
+    todoRemove: todoFactory.creator('TODO_REMOVE')
 };
 
 const filterFactory = new ActionFactory<FilterActionMap>();
 const filterActionCreators = {
-    setFilter: filterFactory.creator('FILTER_SET'),
+    setFilter: filterFactory.creator('FILTER_SET')
 };
 ```
 
@@ -82,22 +82,25 @@ With the state and the actions defined we can create our reducers. TS-Redux prov
 
 ```typescript
 const todoReducer = createReducer<Todo[], TodoActionMap>([], {
-    'TODO_ADD': (state, payload) => [
+    TODO_ADD: (state, payload) => [
         ...state,
         { id: payload.id, text: payload.text, completed: false }
     ],
-    'TODO_TOGGLE': (state, payload) => {
-        return state.map(todo => todo.id === payload
-            ? { ...todo, completed: !todo.completed }
-            : todo);
+    TODO_TOGGLE: (state, payload) => {
+        return state.map(
+            todo =>
+                todo.id === payload
+                    ? { ...todo, completed: !todo.completed }
+                    : todo
+        );
     },
-    'TODO_REMOVE': (state, payload) => {
+    TODO_REMOVE: (state, payload) => {
         return state.filter(todo => todo.id !== payload);
     }
 });
 
 const filterReducer = createReducer<Filter, FilterActionMap>(Filter.All, {
-    'FILTER_SET': (_, payload) => payload
+    FILTER_SET: (_, payload) => payload
 });
 ```
 
@@ -124,8 +127,8 @@ const store = createStore<State, ActionMap>(reducer);
 store.dispatch({ type: 'ANYTHING' });
 
 // Type safe
-store.action('TODO_ADD').dispatch({ id: 1, text: 'My first TODO!' });
-store.action('TODO_TOGGLE').dispatch(1);
+store.dispatch('TODO_ADD', { id: 1, text: 'My first TODO!' });
+store.dispatch('TODO_TOGGLE', 1);
 ```
 
 ## Example projects

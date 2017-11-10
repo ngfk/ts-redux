@@ -9,15 +9,14 @@ interface Todo {
 }
 
 interface TodoActions {
-    'TODO_ADD': { id: number, text: string };
-    'TODO_REMOVE': number;
+    TODO_ADD: { id: number; text: string };
+    TODO_REMOVE: number;
 }
 
 describe('Store', () => {
-
     it('respect the initial state', () => {
         // Initial state set by reducer
-        const store1 = new Store<Todo[], TodoActions>((s: Todo[]) => s);
+        const store1 = new Store<Todo[], TodoActions>((s: any) => s);
         expect(store1.getState()).eq(undefined);
 
         const initial2 = [] as Todo[];
@@ -30,7 +29,7 @@ describe('Store', () => {
 
         // Initial state set when creating store
         const initial4 = [] as Todo[];
-        const store4 = new Store<Todo[], TodoActions>((s: Todo[]) => s, initial4);
+        const store4 = new Store<Todo[], TodoActions>((s: any) => s, initial4);
         expect(store4.getState()).eq(initial4);
     });
 });

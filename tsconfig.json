@@ -1,22 +1,31 @@
 {
     "compilerOptions": {
+        // Basic Options
         "target": "es5",
         "module": "commonjs",
-        "lib": ["es2015"],
+        "lib": ["esnext"],
+        "allowJs": false,
+        "checkJs": false,
         "declaration": true,
         "sourceMap": true,
-        "outDir": "./dist",
-        "removeComments": true,
+        "downlevelIteration": true,
+        "skipLibCheck": true,
+        "outDir": "dist",
+
+        // Strict Type-Checking Options
         "strict": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
         "noImplicitThis": true,
         "alwaysStrict": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
+
+        // Additional Checks
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": false,
+
+        // Module Resolution Options
         "moduleResolution": "node"
-    },
-    "include": ["src"]
+    }
 }

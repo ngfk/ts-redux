@@ -1,7 +1,6 @@
-import { ActionFactory } from '../src/action-factory';
-import { combineReducers } from '../src/combine-reducers';
-import { createReducer } from '../src/create-reducer';
-import { createStore } from '../src/create-store';
+import { ActionFactory } from '../src/action-creation';
+import { combineReducers, createReducer } from '../src/reducer-creation';
+import { createStore } from '../src/store';
 
 // 1. Define state
 interface Todo {
@@ -50,9 +49,17 @@ const filterActionCreators = {
 
 // 3. Create reducers
 const todoReducer = createReducer<Todo[], TodoActionMap>([], {
-    TODO_ADD: (state, payload) => [...state, { id: payload.id, text: payload.text, completed: false }],
+    TODO_ADD: (state, payload) => [
+        ...state,
+        { id: payload.id, text: payload.text, completed: false }
+    ],
     TODO_TOGGLE: (state, payload) => {
-        return state.map(todo => (todo.id === payload ? { ...todo, completed: !todo.completed } : todo));
+        return state.map(
+            todo =>
+                todo.id === payload
+                    ? { ...todo, completed: !todo.completed }
+                    : todo
+        );
     },
     TODO_REMOVE: (state, payload) => {
         return state.filter(todo => todo.id !== payload);
@@ -75,5 +82,5 @@ const store = createStore<State, ActionMap>(reducer);
 store.dispatch({ type: 'ANYTHING' });
 
 // Type safe
-store.action('TODO_ADD').dispatch({ id: 1, text: 'My first TODO!' });
-store.action('TODO_TOGGLE').dispatch(1);
+store.dispatch('TODO_ADD', { id: 1, text: 'My first TODO!' });
+store.dispatch('TODO_TOGGLE', 1);

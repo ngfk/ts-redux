@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { Reducer } from '../src/models/reducer';
-import { ReducerBuilder } from '../src/reducer-builder';
+import { Reducer } from '../src/reducer';
+import { ReducerBuilder } from '../src/reducer-creation';
 
 interface Todo {
     readonly id: number;
@@ -10,19 +10,17 @@ interface Todo {
 }
 
 interface TodoActions {
-    'TODO_ADD': { id: number, text: string };
-    'TODO_REMOVE': number;
+    TODO_ADD: { id: number; text: string };
+    TODO_REMOVE: number;
 }
 
 describe('ReducerBuilder', () => {
-
     const triggerReducer = (reducer: Reducer<any>, payload?: any) => {
         return reducer(undefined, { type: '', payload });
     };
 
     it('respect the initial state', () => {
-        const reducer1 = new ReducerBuilder<Todo[], TodoActions>()
-            .build();
+        const reducer1 = new ReducerBuilder<Todo[], TodoActions>().build();
 
         expect(triggerReducer(reducer1)).eq(undefined);
 
@@ -31,11 +29,11 @@ describe('ReducerBuilder', () => {
             .init(initial2)
             .build();
 
-        expect(triggerReducer(reducer2)).eq(initial2);
+        expect(triggerReducer(reducer2)).eql(initial2);
     });
 
     it('add case to reducer', () => {
-        let triggeredAdd    = false;
+        let triggeredAdd = false;
         let triggeredRemove = false;
 
         const reducer = new ReducerBuilder<Todo[], TodoActions>()
@@ -53,10 +51,7 @@ describe('ReducerBuilder', () => {
                 expect(payload.id).a('number');
                 expect(payload.text).a('string');
 
-                return [
-                    ...state,
-                    { ...payload, completed: false }
-                ];
+                return [...state, { ...payload, completed: false }];
             })
             .case('TODO_REMOVE', (state, payload) => {
                 triggeredRemove = true;
