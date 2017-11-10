@@ -76,6 +76,14 @@ export class Store<State, ActionMap> implements ReduxStore<State> {
         this.redux.replaceReducer(this.reducer);
     };
 
+    /**
+     * Reset's the state to either the provided state or to the initial state.
+     * @param state The new state
+     */
+    public reset = (state = this.initial): void => {
+        this.redux.dispatch({ type: RESET, payload: state });
+    };
+
     private extendReducer(originalReducer: Reducer<State>): Reducer<State> {
         // Construct and return a new reducer function
         const extended: any = (state?: State, action?: Action<any>): State => {
