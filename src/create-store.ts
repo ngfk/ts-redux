@@ -4,11 +4,15 @@ import { Reducer } from './models/reducer';
 import { Store } from './store';
 
 export type createStore = {
-    <State, ActionMap>(reducer: Reducer<State>, enhancer?: StoreEnhancer<State>): Store<State, ActionMap>;
-    <State, ActionMap>(reducer: Reducer<State>, preloadedState: State, enhancer?: StoreEnhancer<State>): Store<
-        State,
-        ActionMap
-    >;
+    <State, ActionMap>(
+        reducer: Reducer<State>,
+        enhancer?: StoreEnhancer<State>
+    ): Store<State, ActionMap>;
+    <State, ActionMap>(
+        reducer: Reducer<State>,
+        preloadedState: State,
+        enhancer?: StoreEnhancer<State>
+    ): Store<State, ActionMap>;
 };
 
 export const createStore: createStore = <State, ActionMap>(

@@ -7,12 +7,20 @@ export class Store<State, ActionMap> implements ReduxStore<State> {
     protected redux: ReduxStore<State>;
     private initial?: State;
 
-    constructor(protected reducer: Reducer<State>, initialState?: State, enhancer?: StoreEnhancer<State>) {
+    constructor(
+        protected reducer: Reducer<State>,
+        initialState?: State,
+        enhancer?: StoreEnhancer<State>
+    ) {
         this.initial = initialState;
 
         this.redux = createStore<State>(
             this.reducer,
-            initialState || (this.reducer as Reducer<any>)(undefined, { type: '', payload: undefined }),
+            initialState ||
+                (this.reducer as Reducer<any>)(undefined, {
+                    type: '',
+                    payload: undefined
+                }),
             enhancer
         );
     }
@@ -34,7 +42,9 @@ export class Store<State, ActionMap> implements ReduxStore<State> {
         this.redux.replaceReducer(this.reducer);
     };
 
-    public action = <Type extends keyof ActionMap>(type: Type): StoreAction<State, ActionMap, Type> => {
+    public action = <Type extends keyof ActionMap>(
+        type: Type
+    ): StoreAction<State, ActionMap, Type> => {
         return new StoreAction<State, ActionMap, Type>(this, type);
     };
 }
@@ -42,7 +52,9 @@ export class Store<State, ActionMap> implements ReduxStore<State> {
 export class StoreAction<State, ActionMap, Type extends keyof ActionMap> {
     constructor(private store: Store<State, ActionMap>, private type: Type) {}
 
-    public dispatch(payload: ActionMap[Type]): TypedAction<Type, ActionMap[Type]> {
-        return this.store.dispatch({ type: this.type, payload });
+    public dispatch(
+        payload?: ActionMap[Type]
+    ): TypedAction<Type, ActionMap[Type]> {
+        return this.store.dispatch({ type: this.type, payload: payload! });
     }
 }

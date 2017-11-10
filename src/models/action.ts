@@ -16,6 +16,7 @@ export interface Action<Payload = {}> extends AnyAction {
     readonly meta?: ActionMetadata;
 }
 
-export interface TypedAction<Type extends string, Payload = {}> extends Action<Payload> {
+export interface TypedAction<Type extends string, Payload = {}>
+    extends Action<Payload> {
     readonly type: Type;
 }

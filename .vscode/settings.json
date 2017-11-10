@@ -1,22 +1,29 @@
 {
+    // Place your settings in this file to overwrite default and user settings.
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "node_modules": true
+
+        "node_modules": true,
+        "package-lock.json": true
     },
 
     "editor.formatOnSave": true,
-    "typescriptHero.resolver.organizeOnSave": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+
+    "typescript.format.enable": false,
+    "json.format.enable": false,
+    "html.format.enable": false,
+    "javascript.format.enable": false,
 
     "typescript.tsdk": "./node_modules/typescript/lib",
 
-    "tslint.enable": true,
-    "tslint.configFile": "./tslint.json",
-    "tslint.nodePath": "./node_modules/tslint/lib",
-
-    "editor.tabSize": 4,
-    "editor.insertSpaces": true
+    "typescriptHero.resolver.disableImportsSorting": false,
+    "typescriptHero.resolver.multiLineTrailingComma": false,
+    "typescriptHero.resolver.organizeOnSave": true,
+    "typescriptHero.resolver.multiLineWrapThreshold": 120
 }

@@ -3,14 +3,19 @@ import { Reducer, SubReducer } from './models/reducer';
 
 export class ReducerBuilder<State, ActionMap> {
     private initial: State;
-    private cases: { [type: string]: SubReducer<State, ActionMap, keyof ActionMap> } = {};
+    private cases: {
+        [type: string]: SubReducer<State, ActionMap, keyof ActionMap>;
+    } = {};
 
     public init(state: State): this {
         this.initial = state;
         return this;
     }
 
-    public case<Type extends keyof ActionMap>(type: Type, reducer: SubReducer<State, ActionMap, Type>): this {
+    public case<Type extends keyof ActionMap>(
+        type: Type,
+        reducer: SubReducer<State, ActionMap, Type>
+    ): this {
         this.cases[type] = reducer;
         return this;
     }

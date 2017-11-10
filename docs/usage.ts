@@ -11,7 +11,9 @@ interface Todo {
 }
 
 enum Filter {
-    All, Completed, Active
+    All,
+    Completed,
+    Active
 }
 
 interface State {
@@ -21,16 +23,16 @@ interface State {
 
 // 2. Map actions
 interface TodoActionMap {
-    'TODO_ADD': { id: number, text: string };
-    'TODO_TOGGLE': number;
-    'TODO_REMOVE': number;
+    TODO_ADD: { id: number; text: string };
+    TODO_TOGGLE: number;
+    TODO_REMOVE: undefined;
 }
 
 interface FilterActionMap {
-    'FILTER_SET': Filter;
+    FILTER_SET: Filter;
 }
 
-interface ActionMap extends TodoActionMap, FilterActionMap { }
+interface ActionMap extends TodoActionMap, FilterActionMap {}
 
 // Optionally, define action creators for use with react-redux
 // Example react project at https://github.com/ngfk/todomvc-react-ts-redux
@@ -38,32 +40,27 @@ const todoFactory = new ActionFactory<TodoActionMap>();
 const todoActionCreators = {
     todoAdd: todoFactory.creator('TODO_ADD'),
     todoToggle: todoFactory.creator('TODO_TOGGLE'),
-    todoRemove: todoFactory.creator('TODO_REMOVE'),
+    todoRemove: todoFactory.creator('TODO_REMOVE')
 };
 
 const filterFactory = new ActionFactory<FilterActionMap>();
 const filterActionCreators = {
-    setFilter: filterFactory.creator('FILTER_SET'),
+    setFilter: filterFactory.creator('FILTER_SET')
 };
 
 // 3. Create reducers
 const todoReducer = createReducer<Todo[], TodoActionMap>([], {
-    'TODO_ADD': (state, payload) => [
-        ...state,
-        { id: payload.id, text: payload.text, completed: false }
-    ],
-    'TODO_TOGGLE': (state, payload) => {
-        return state.map(todo => todo.id === payload
-            ? { ...todo, completed: !todo.completed }
-            : todo);
+    TODO_ADD: (state, payload) => [...state, { id: payload.id, text: payload.text, completed: false }],
+    TODO_TOGGLE: (state, payload) => {
+        return state.map(todo => (todo.id === payload ? { ...todo, completed: !todo.completed } : todo));
     },
-    'TODO_REMOVE': (state, payload) => {
+    TODO_REMOVE: (state, payload) => {
         return state.filter(todo => todo.id !== payload);
     }
 });
 
 const filterReducer = createReducer<Filter, FilterActionMap>(Filter.All, {
-    'FILTER_SET': (_, payload) => payload
+    FILTER_SET: (_, payload) => payload
 });
 
 const reducer = combineReducers<State>({
