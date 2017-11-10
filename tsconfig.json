@@ -27,5 +27,6 @@
 
         // Module Resolution Options
         "moduleResolution": "node"
-    }
+    },
+    "include": ["src"]
 }
